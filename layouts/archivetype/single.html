@@ -1,0 +1,26 @@
+{{ partial "header.html" . }}
+	<div style="margin-top: 30px; margin-bottom: 30px">
+		{{ range (where .Site.Pages "Type" "post").GroupByDate "2006" }}
+			<!-- <h3 style="margin-top: 5%;margin-left: -25%;">{{ .Key }}</h3> -->
+			<div style="display:table; margin-left: 25%">
+				{{ range (where .Pages "Type" "post") }}
+				<div style="display:table-row">
+				<div style="display: table-cell; width: 25%;"> </div>
+				<div class="post-meta"  style="display: table-cell; text-align: left; color: black">
+					{{ .Date.Format "2006 Jan 2" }} 
+				</div>
+				<div style="display: table-cell; width: 20px"> </div>
+				<div style="display: table-cell; text-align: left">
+						<h3>
+							<a href="{{ .RelPermalink }}">
+								{{ .Title }} {{ if .GetParam "draft" }}DRAFT{{ end }}
+							</a>
+						</h3>
+				</div>
+			</div>
+			{{ end }}
+			</div>
+		{{ end }}
+	</div>
+
+{{ partial "footer.html" . }}

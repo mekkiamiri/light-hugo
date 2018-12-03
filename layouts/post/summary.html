@@ -9,7 +9,7 @@
 			</span>
 		</header>
 		<div class="summary">
-			{{ .Summary }}
+			{{slicestr .Summary 0 140}}
 			<a href="{{ .RelPermalink }}">Read more...</a>
 		</div>
 	</article>
